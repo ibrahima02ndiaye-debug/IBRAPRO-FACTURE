@@ -1,0 +1,53 @@
+
+name: Déploiement IbraPro Automatique
+
+on:
+  push:
+    branches: ["main"]
+
+  # Permet de lancer le déploiement manuellement depuis l'onglet Actions
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrently:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps: deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Installation de Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Installation des dépendances
+        run: bun install
+
+      - name: Build de l'application
+        run: bun run build
+        env:
+          VITE_GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Configuration de GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Téléchargement de l'artefact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Déploiement vers GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
