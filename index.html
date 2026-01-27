@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#2557a7">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>IbraPro | Gestion Garage</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -59,7 +60,7 @@
             }
         }
     </style>
-    <!-- Import map unifié : Force une seule instance de React 19.0.0 pour tout le projet -->
+    <!-- Import map unifié et corrigé : On retire les doublons et les outils de build -->
     <script type="importmap">
 {
   "imports": {
@@ -77,11 +78,10 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body>
     <div id="root"></div>
+    <!-- Chargement direct du module principal -->
     <script type="module" src="index.tsx"></script>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
