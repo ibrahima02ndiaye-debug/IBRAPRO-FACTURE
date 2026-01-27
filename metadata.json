@@ -1,0 +1,19 @@
+{
+  "name": "IbraPro - Gestion Garage",
+  "short_name": "IbraPro",
+  "description": "Logiciel de facturation et gestion pour Ibra Services Inc.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2557a7",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/lucide-react/lucide/main/icons/wrench.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ],
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
