@@ -2,7 +2,6 @@
 import { Dexie, type Table } from 'dexie';
 import { Invoice, Client, Product, CompanyInfo } from '../types';
 
-// Use named import for Dexie to ensure proper class inheritance and type recognition for version() and transaction()
 export class IbraProDatabase extends Dexie {
   invoices!: Table<Invoice>;
   clients!: Table<Client>;
@@ -11,7 +10,6 @@ export class IbraProDatabase extends Dexie {
 
   constructor() {
     super('IbraProDB');
-    // Initialize the database version and schema using inherited version() method from Dexie
     this.version(1).stores({
       invoices: '++id, number, clientId, date, status',
       clients: '++id, name, email',
@@ -21,7 +19,6 @@ export class IbraProDatabase extends Dexie {
   }
 }
 
-// Create a single instance of the database to be used throughout the application
 export const db = new IbraProDatabase();
 
 export const dbService = {
@@ -46,7 +43,6 @@ export const dbService = {
       reader.onload = async (e) => {
         try {
           const data = JSON.parse(e.target?.result as string);
-          // Execute transaction on the database instance; using table references directly ensures type safety and data integrity
           await db.transaction('rw', [db.invoices, db.clients, db.products, db.company], async () => {
             if (data.invoices) { await db.invoices.clear(); await db.invoices.bulkAdd(data.invoices); }
             if (data.clients) { await db.clients.clear(); await db.clients.bulkAdd(data.clients); }
