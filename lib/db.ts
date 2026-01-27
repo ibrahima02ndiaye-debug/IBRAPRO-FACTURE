@@ -1,8 +1,8 @@
 
-import Dexie, { type Table } from 'dexie';
+import { Dexie, type Table } from 'dexie';
 import { Invoice, Client, Product, CompanyInfo } from '../types';
 
-// Use default import for Dexie to ensure proper class inheritance and type recognition for version() and transaction()
+// Use named import for Dexie to ensure proper class inheritance and type recognition for version() and transaction()
 export class IbraProDatabase extends Dexie {
   invoices!: Table<Invoice>;
   clients!: Table<Client>;

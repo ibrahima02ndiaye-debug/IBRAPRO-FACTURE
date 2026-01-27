@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#2557a7">
-    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>IbraPro | Gestion Garage</title>
@@ -60,7 +59,7 @@
             }
         }
     </style>
-    <!-- Import map unifié et corrigé : On retire les doublons et les outils de build -->
+    <!-- Import map unifié : Force une seule instance de React pour tous les modules -->
     <script type="importmap">
 {
   "imports": {
@@ -81,7 +80,6 @@
 </head>
 <body>
     <div id="root"></div>
-    <!-- Chargement direct du module principal -->
     <script type="module" src="index.tsx"></script>
 </body>
 </html>
