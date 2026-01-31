@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="refresh" content="0; url=/IBRAPRO-FACTURE/">
+    <title>Redirection...</title>
+</head>
+
+<body>
+    <p>Redirection en cours...</p>
+    <script>
+        // Redirection SPA pour GitHub Pages
+        // Récupère le chemin actuel
+        var path = window.location.pathname;
+        var appBase = '/IBRAPRO-FACTURE/';
+
+        // Si on n'est pas sur la racine, on redirige vers la racine avec le chemin en query param
+        if (path !== appBase && path.startsWith(appBase)) {
+            window.location.replace(appBase + '?p=' + encodeURIComponent(path.substring(appBase.length)));
+        } else if (!path.startsWith(appBase)) {
+            window.location.replace(appBase);
+        }
+    </script>
+</body>
+
+</html>
